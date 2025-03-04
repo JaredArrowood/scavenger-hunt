@@ -49,8 +49,14 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'Welcome to your PFT Scavenger Hunt! Press the start button to begin!',
+            Image.asset('assets/PFT.jpg'),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: const Text(
+                'Welcome to your PFT Scavenger Hunt! Press the start button to begin!',
+                style: TextStyle(fontSize: 20, fontFamily: 'Roboto'),
+                textAlign: TextAlign.center,
+              ),
             ),
             ElevatedButton(
               onPressed: () {

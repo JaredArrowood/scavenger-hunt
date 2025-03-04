@@ -11,6 +11,7 @@ class QuestionScreen1State extends State<QuestionScreen1> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
 
+  //fill this in with a correct answer to the question
   void _checkAnswer() {
     if (_controller.text.toLowerCase() == 'correct answer') {
       setState(() {
@@ -32,6 +33,7 @@ class QuestionScreen1State extends State<QuestionScreen1> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
+                //change this to a question about pft
                 'What is the correct answer?',
                 style: TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
@@ -55,7 +57,7 @@ class QuestionScreen1State extends State<QuestionScreen1> {
                   onPressed: () {
                     // Navigate to the next screen
                   },
-                  child: Text('Next Screen'),
+                  child: Text('Advance to question 2...'),
                 ),
                 SizedBox(height: 10),
                 Text(
