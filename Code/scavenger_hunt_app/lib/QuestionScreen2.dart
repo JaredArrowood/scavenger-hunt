@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/QuestionScreen2.dart';
+// import 'package:scavenger_hunt_app/QuestionScreen2.dart';
 
-class QuestionScreen1 extends StatefulWidget {
-  const QuestionScreen1({super.key});
+class QuestionScreen2 extends StatefulWidget {
+  const QuestionScreen2({super.key});
 
   @override
   QuestionScreen1State createState() => QuestionScreen1State();
 }
 
-class QuestionScreen1State extends State<QuestionScreen1> {
+class QuestionScreen1State extends State<QuestionScreen2> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
 
@@ -76,12 +76,9 @@ class QuestionScreen1State extends State<QuestionScreen1> {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QuestionScreen2()));
+                    // Navigator.push(context, QuestionScreen)
                   },
-                  child: Text('Advance to question 2...'),
+                  child: Text('Advance to question 3...'),
                 ),
                 SizedBox(height: 10),
                 Text(
