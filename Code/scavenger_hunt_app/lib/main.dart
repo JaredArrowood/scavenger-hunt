@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/QuestionScreen1.dart';
+import 'package:scavenger_hunt_app/atrium_binary_question.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void navigateToNextScreen() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => QuestionScreen1()),
+      MaterialPageRoute(builder: (context) => AtriumBinaryQuestion()),
     );
   }
 

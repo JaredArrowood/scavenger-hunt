@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/QuestionScreen2.dart';
+import 'package:scavenger_hunt_app/widgets/question_form.dart';
+import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
 class AtriumBinaryQuestion extends StatefulWidget {
   const AtriumBinaryQuestion({super.key});
@@ -40,78 +42,29 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                if (!_isCorrect) ...[
-                  Image.asset(
-                    'assets/atrium_binary_cropped.jpg',
-                    width: 300,
-                    height: 300,
-                  ),
-                  Text(
-                    //change this to a question about pft
-                    'Where past and future blend, minds ascend.\n\n Between science and study, my secret extends.\n\n Across from those who built this grand hall,\n\n My numbers await—will you decode them all?\n\n I whisper in ones and zeros, hidden in sight.\n\n Unravel my code to reveal my might.',
-                    style: TextStyle(fontSize: 15),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: 20),
-                  TextField(
+                if (!_isCorrect)
+                  QuestionForm(
+                    imagePath: 'assets/atrium_binary_cropped.jpg',
+                    questionText:
+                        'Where past and future blend, minds ascend.\n\n Between science and study, my secret extends.\n\n Across from those who built this grand hall,\n\n My numbers await—will you decode them all?\n\n I whisper in ones and zeros, hidden in sight.\n\n Unravel my code to reveal my might.',
+                    showError: _showError,
                     controller: _controller,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Enter your answer',
-                      errorText: _showError
-                          ? 'Incorrect answer, try again'
-                          : null, // Add this line
-                    ),
+                    onSubmit: _checkAnswer,
                   ),
-                  SizedBox(height: 20),
-                  if (_showError) ...[
-                    // Add this section
-                    Text(
-                      'That\'s not quite right. Try again!',
-                      style: TextStyle(color: Colors.red, fontSize: 16),
-                    ),
-                    SizedBox(height: 10),
-                  ],
-                  ElevatedButton(
-                    onPressed: _checkAnswer,
-                    child: Text('Submit'),
-                  ),
-                ],
-                if (_isCorrect) ...[
-                  //can also add an image if one is required
-                  // Image.asset('assets/PFT.jpg'),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                          color: Colors.black, width: 2), // Add border here
-                    ),
-                    child: Text(
-                      "YOU GOT IT RIGHT... DESCRIPTION... ",
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: Colors
-                              .green), //change this to a description of the answer
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
+                if (_isCorrect)
+                  SuccessMessage(
+                    imagePath: 'assets/atrium_binary.jpg',
+                    description:
+                        "The Cambre Atrium bridges the old and new sections of Patrick F. Taylor Hall, linking classrooms and chemical engineering labs. It is one of three main common spaces and sits near the RoyOMartin Auditorium, the building's largest lecture hall.",
+                    onNext: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => QuestionScreen2()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QuestionScreen2()),
+                      );
                     },
-                    child: Text('Advance to question 2...'),
+                    nextButtonText: 'Advance to the next question...',
                   ),
-                  SizedBox(height: 10),
-                  Text(
-                    'You got the question correct!',
-                    style: TextStyle(color: Colors.green, fontSize: 18),
-                  ),
-                ],
               ],
             ),
           ),
