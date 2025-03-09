@@ -29,14 +29,22 @@ class QuestionForm extends StatelessWidget {
         ],
         Text(
           questionText,
-          style: TextStyle(fontSize: 15),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+                height: 2.5, // Increased line height
+              ),
           textAlign: TextAlign.center,
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 30), // Space before the input field
         TextField(
           controller: controller,
           decoration: InputDecoration(
-            border: OutlineInputBorder(),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: Colors.deepPurple), // Input field border color
+            ),
             labelText: 'Enter your answer',
             errorText: showError ? 'Incorrect answer, try again' : null,
           ),
@@ -51,7 +59,17 @@ class QuestionForm extends StatelessWidget {
         ],
         ElevatedButton(
           onPressed: onSubmit,
-          child: Text('Submit'),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurple, // Background color for the button
+            foregroundColor: Colors.white, // Text color on the button
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12), // Rounded button corners
+            ),
+          ),
+          child: Text(
+            'Submit',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          ),
         ),
       ],
     );

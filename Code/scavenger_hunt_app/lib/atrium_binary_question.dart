@@ -34,6 +34,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Binary 1'),
+        backgroundColor: Colors.orange,
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -46,7 +47,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
                   QuestionForm(
                     imagePath: 'assets/atrium_binary_cropped.jpg',
                     questionText:
-                        'Where past and future blend, minds ascend.\n\n Between science and study, my secret extends.\n\n Across from those who built this grand hall,\n\n My numbers await—will you decode them all?\n\n I whisper in ones and zeros, hidden in sight.\n\n Unravel my code to reveal my might.',
+                        'Where past and future blend, minds ascend.\n Between science and study, my secret extends.\n Across from those who built this grand hall,\n My numbers await—will you decode them all?\n I whisper in ones and zeros, hidden in sight.\n Unravel my code to reveal my might.',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,

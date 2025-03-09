@@ -34,6 +34,7 @@ class _ChevronBinaryQuestionState extends State<ChevronBinaryQuestion> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Binary 2'),
+        backgroundColor: Colors.lightBlueAccent,
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -46,11 +47,11 @@ class _ChevronBinaryQuestionState extends State<ChevronBinaryQuestion> {
                   QuestionForm(
                     imagePath: 'assets/chevron_binary_cropped.png',
                     questionText:
-                        'In this space where learning thrives,\n\n'
-                        'Technology and tools help dreams arrive.\n\n'
-                        'With printers large and gadgets galore,\n\n'
-                        'Students build, create, and explore.\n\n'
-                        'Find me where communication is key,\n\n'
+                        'In this space where learning thrives,\n'
+                        'Technology and tools help dreams arrive.\n'
+                        'With printers large and gadgets galore,\n'
+                        'Students build, create, and explore.\n'
+                        'Find me where communication is key,\n'
                         'What is this space that sets you free?',
                     showError: _showError,
                     controller: _controller,
