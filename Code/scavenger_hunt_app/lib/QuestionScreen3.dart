@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/QuestionScreen3.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
-class QuestionScreen2 extends StatefulWidget {
-  const QuestionScreen2({super.key});
+class QuestionScreen3 extends StatefulWidget {
+  const QuestionScreen3({super.key});
 
   @override
-  QuestionScreen2State createState() => QuestionScreen2State();
+  QuestionScreen3State createState() => QuestionScreen3State();
 }
 
-class QuestionScreen2State extends State<QuestionScreen2> {
+class QuestionScreen3State extends State<QuestionScreen3> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
   bool _showError = false;
@@ -32,7 +31,7 @@ class QuestionScreen2State extends State<QuestionScreen2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 2'),
+        title: Text('Question 3'),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -43,23 +42,19 @@ class QuestionScreen2State extends State<QuestionScreen2> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    //imagePath: 'assets/PFT.jpg',  // Uncomment and add image path if needed
+                    //imagePath: 'assets/image.jpg',  // Uncomment and add image path if needed
                     questionText: 'What is the correct answer?',
                     showError: _showError,
                     controller: _controller,
-                    onSubmit: _checkAnswer, imagePath: '',
+                    onSubmit: _checkAnswer,
                   ),
                 if (_isCorrect)
                   SuccessMessage(
                     description: "YOU GOT IT RIGHT... DESCRIPTION...",
                     onNext: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QuestionScreen3()),
-                      );
+                      // Add navigation to next question screen here
                     },
-                    nextButtonText: 'Advance to question 3...',
+                    nextButtonText: 'Advance to question ...',
                   ),
               ],
             ),

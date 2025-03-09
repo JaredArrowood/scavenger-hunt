@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/QuestionScreen2.dart';
+import 'package:scavenger_hunt_app/chevron_binary_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
@@ -60,7 +60,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuestionScreen2()),
+                            builder: (context) => ChevronBinaryQuestion()),
                       );
                     },
                     nextButtonText: 'Advance to the next question...',
