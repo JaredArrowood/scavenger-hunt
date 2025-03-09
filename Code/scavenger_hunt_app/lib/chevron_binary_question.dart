@@ -46,15 +46,11 @@ class _ChevronBinaryQuestionState extends State<ChevronBinaryQuestion> {
                   QuestionForm(
                     imagePath: 'assets/chevron_binary_cropped.png',
                     questionText:
-                        'In this space where learning thrives,\n'
-                        'Technology and tools help dreams arrive.\n'
-                        'With printers large and gadgets galore,\n'
-                        'Students build, create, and explore.\n'
-                        'A place for words, for speech, for sight,\n'
-                        'Where tech and learning take their flight.\n'
-                        'If you seek to rise, then here you stand,\n'
-                        'With tools and knowledge at your hand.\n'
-                        'Find me where communication is key,\n'
+                        'In this space where learning thrives,\n\n'
+                        'Technology and tools help dreams arrive.\n\n'
+                        'With printers large and gadgets galore,\n\n'
+                        'Students build, create, and explore.\n\n'
+                        'Find me where communication is key,\n\n'
                         'What is this space that sets you free?',
                     showError: _showError,
                     controller: _controller,

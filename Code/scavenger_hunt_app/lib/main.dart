@@ -19,13 +19,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: TextTheme(
           bodyLarge: TextStyle(fontSize: 16, color: Colors.black87),
-          bodyMedium: TextStyle(fontSize: 14, color: Colors.black45),
-          titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.deepPurple),
+          bodyMedium: TextStyle(fontSize: 14, color: Colors.black54),
+          titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.yellow),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Theme.of(context).colorScheme.primary, // Correct use of primary color
-            foregroundColor: Theme.of(context).colorScheme.onPrimary, // Correct use of onPrimary color
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            foregroundColor: Theme.of(context).colorScheme.onPrimary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
@@ -59,29 +59,36 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(widget.title, style: Theme.of(context).textTheme.titleLarge),
+        centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset('assets/PFT.jpg'),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: const Text(
-                'Welcome to your PFT Scavenger Hunt! Press the start button to begin!',
-                style: TextStyle(fontSize: 20, fontFamily: 'Roboto'),
-                textAlign: TextAlign.center,
+      body: Padding(
+        padding: const EdgeInsets.all(20.0), // Added padding to body
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset('assets/PFT.jpg', height: 400, width: 400),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Welcome to your PFT Scavenger Hunt! Press the start button to begin!',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 18),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                navigateToNextScreen();
-              },
-              child: const Text('Start'),
-            ),
-          ],
+              ElevatedButton(
+                onPressed: () {
+                  navigateToNextScreen();
+                },
+                child: const Text('Start'),
+                style: ElevatedButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 20),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
