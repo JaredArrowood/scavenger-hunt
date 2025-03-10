@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/QuestionScreen3.dart';
+import 'package:scavenger_hunt_app/tau_beta_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
-class ChevronBinaryQuestion extends StatefulWidget {
-  const ChevronBinaryQuestion({super.key});
+class ChevronQuestion extends StatefulWidget {
+  const ChevronQuestion({super.key});
 
   @override
-  State<ChevronBinaryQuestion> createState() => _ChevronBinaryQuestionState();
+  State<ChevronQuestion> createState() => _ChevronQuestionState();
 }
 
-class _ChevronBinaryQuestionState extends State<ChevronBinaryQuestion> {
+class _ChevronQuestionState extends State<ChevronQuestion> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
   bool _showError = false; // Add this line
 
   //fill this in with a correct answer to the question
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == 'correct answer') {
+    if (_controller.text.toLowerCase() == 'chevron center') {
       setState(() {
         _isCorrect = true;
         _showError = false;
@@ -33,7 +33,7 @@ class _ChevronBinaryQuestionState extends State<ChevronBinaryQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Binary 2'),
+        title: Text('Question 2: Location'),
         backgroundColor: Colors.lightBlueAccent,
       ),
       body: SingleChildScrollView(
@@ -45,7 +45,7 @@ class _ChevronBinaryQuestionState extends State<ChevronBinaryQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    imagePath: 'assets/chevron_binary_cropped.png',
+                    imagePath: 'assets/chevron_cropped.png',
                     questionText:
                         'In this space where learning thrives,\n'
                         'Technology and tools help dreams arrive.\n'
@@ -66,7 +66,7 @@ class _ChevronBinaryQuestionState extends State<ChevronBinaryQuestion> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuestionScreen3()),
+                            builder: (context) => tauBetaQuestion()),
                       );
                     },
                     nextButtonText: 'Advance to the next question...',

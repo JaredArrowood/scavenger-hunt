@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/QuestionScreen1.dart';
 import 'package:scavenger_hunt_app/atrium_binary_question.dart';
-import 'package:scavenger_hunt_app/chevron_binary_question.dart';
 
 void main() {
   runApp(const MyApp());

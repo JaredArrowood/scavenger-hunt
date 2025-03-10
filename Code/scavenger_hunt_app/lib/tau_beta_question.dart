@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:scavenger_hunt_app/main.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
-class QuestionScreen3 extends StatefulWidget {
-  const QuestionScreen3({super.key});
+class tauBetaQuestion extends StatefulWidget {
+  const tauBetaQuestion({super.key});
 
   @override
-  QuestionScreen3State createState() => QuestionScreen3State();
+  tauBetaQuestionState createState() => tauBetaQuestionState();
 }
 
-class QuestionScreen3State extends State<QuestionScreen3> {
+class tauBetaQuestionState extends State<tauBetaQuestion> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
   bool _showError = false;
 
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == 'correct answer') {
+    if (_controller.text.toLowerCase() == 'tau beta phi') {
       setState(() {
         _isCorrect = true;
         _showError = false;
@@ -31,7 +32,7 @@ class QuestionScreen3State extends State<QuestionScreen3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 3'),
+        title: Text('Question 3: Symbol'),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -52,9 +53,13 @@ class QuestionScreen3State extends State<QuestionScreen3> {
                   SuccessMessage(
                     description: "YOU GOT IT RIGHT... DESCRIPTION...",
                     onNext: () {
-                      // Add navigation to next question screen here
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MyApp()),
+                      );
                     },
-                    nextButtonText: 'Advance to question ...',
+                    nextButtonText: 'Return Home',
                   ),
               ],
             ),

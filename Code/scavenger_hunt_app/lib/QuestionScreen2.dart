@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/QuestionScreen3.dart';
+import 'package:scavenger_hunt_app/tau_beta_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
@@ -56,7 +56,7 @@ class QuestionScreen2State extends State<QuestionScreen2> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuestionScreen3()),
+                            builder: (context) => tauBetaQuestion()),
                       );
                     },
                     nextButtonText: 'Advance to question 3...',

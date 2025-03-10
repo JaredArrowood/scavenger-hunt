@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/chevron_binary_question.dart';
+import 'package:scavenger_hunt_app/chevron_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
@@ -33,7 +33,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Binary 1'),
+        title: Text('Question 1: Binary'),
         backgroundColor: Colors.orange,
       ),
       body: SingleChildScrollView(
@@ -61,7 +61,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ChevronBinaryQuestion()),
+                            builder: (context) => ChevronQuestion()),
                       );
                     },
                     nextButtonText: 'Advance to the next question...',
