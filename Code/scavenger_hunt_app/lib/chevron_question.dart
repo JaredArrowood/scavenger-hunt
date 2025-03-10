@@ -60,7 +60,7 @@ class _ChevronQuestionState extends State<ChevronQuestion> {
                   SuccessMessage(
                     imagePath: 'assets/chevron.png',
                     description:
-                        "The Chevron Center for Engineering Education is a cool spot that helps students improve their communication skills in different ways—whether it's writing, speaking, visual communication, or using technology. It's part of a program called Communication Across the Curriculum, which gives students access to resources like 3D printers, large format printers, and various tech tools to help with their class projects. If students complete the right courses and build a senior portfolio, they can graduate as Distinguished Communicators. The Chevron Center plays a big role in making this happen and helping students stand out!",
+                        "The Chevron Center helps students enhance communication skills and provides resources like 3D printers for class projects. Students who complete required courses and a portfolio can graduate as Distinguished Communicators.",
                     onNext: () {
                       Navigator.push(
                         context,
