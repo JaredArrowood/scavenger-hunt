@@ -46,8 +46,7 @@ class _ChevronQuestionState extends State<ChevronQuestion> {
                 if (!_isCorrect)
                   QuestionForm(
                     imagePath: 'assets/chevron_cropped.png',
-                    questionText:
-                        'In this space where learning thrives,\n'
+                    questionText: 'In this space where learning thrives,\n'
                         'Technology and tools help dreams arrive.\n'
                         'With printers large and gadgets galore,\n'
                         'Students build, create, and explore.\n'
@@ -59,7 +58,7 @@ class _ChevronQuestionState extends State<ChevronQuestion> {
                   ),
                 if (_isCorrect)
                   SuccessMessage(
-                    imagePath: 'assets/chevron_binary.png',
+                    imagePath: 'assets/chevron.png',
                     description:
                         "The Chevron Center for Engineering Education is a cool spot that helps students improve their communication skills in different ways—whether it's writing, speaking, visual communication, or using technology. It's part of a program called Communication Across the Curriculum, which gives students access to resources like 3D printers, large format printers, and various tech tools to help with their class projects. If students complete the right courses and build a senior portfolio, they can graduate as Distinguished Communicators. The Chevron Center plays a big role in making this happen and helping students stand out!",
                     onNext: () {
