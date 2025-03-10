@@ -16,7 +16,7 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
   bool _showError = false;
 
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == 'tau beta phi') {
+    if (_controller.text.toLowerCase() == 'tau beta pi') {
       setState(() {
         _isCorrect = true;
         _showError = false;
@@ -32,6 +32,7 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.pink,
         title: Text('Question 3: Symbol'),
       ),
       body: SingleChildScrollView(
@@ -43,15 +44,22 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    //imagePath: 'assets/image.jpg',  // Uncomment and add image path if needed
-                    questionText: 'What is the correct answer?',
+                    imagePath: 'assets/tau_beta_cropped.jpg',  
+                    questionText:
+                      "In halls where scholars rise,\n"
+                      "A distinction rare, a badge of pride.\n"
+                      "At LSU, where it first took its stand,\n"
+                      "A legacy built with an honored hand.\n"
+                      "What is this group that sets the bar high,\n"
+                      "Keeps the spirit alive, reaching the sky?",
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
                   ),
                 if (_isCorrect)
                   SuccessMessage(
-                    description: "YOU GOT IT RIGHT... DESCRIPTION...",
+                    imagePath: 'assets/tau_beta.jpg',
+                    description: "Congratulations! You have finished!\nTau Beta Pi is a prestigious engineering honor society founded in 1885, recognizing students and alumni for academic excellence and strong character in the engineering field. With chapters at universities across the U.S., it promotes a spirit of culture and achievement in engineering.",
                     onNext: () {
                       Navigator.push(
                         context,

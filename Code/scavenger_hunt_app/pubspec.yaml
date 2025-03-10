@@ -64,6 +64,8 @@ flutter:
     - assets/atrium_binary_cropped.jpg
     - assets/chevron.png
     - assets/chevron_cropped.png
+    - assets/tau_beta.jpg
+    - assets/tau_beta_cropped.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
