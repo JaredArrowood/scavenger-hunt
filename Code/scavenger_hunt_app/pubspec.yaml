@@ -66,6 +66,21 @@ flutter:
     - assets/chevron_cropped.png
     - assets/tau_beta.jpg
     - assets/tau_beta_cropped.jpg
+    - assets/panera.jpg
+    - assets/panera_cropped.png
+    - assets/dow.png
+    - assets/dow_cropped.png
+    - assets/basf.png
+    - assets/basf_cropped.png
+    - assets/pft_car.jpg
+    - assets/pft_car_cropped.png
+    - assets/bim.png
+    - assets/bim_cropped.png
+    - assets/capstone_gallery.png
+    - assets/capstone_gallery_cropped.png
+    - assets/civil_lab.png
+    - assets/civil_lab_cropped.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/chevron_question.dart';
+import 'package:scavenger_hunt_app/civil_engineering_lab_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
-class AtriumBinaryQuestion extends StatefulWidget {
-  const AtriumBinaryQuestion({super.key});
+class CapstoneGalleryQuestion extends StatefulWidget {
+  const CapstoneGalleryQuestion({super.key});
 
   @override
-  State<AtriumBinaryQuestion> createState() => _AtriumBinaryQuestionState();
+  State<CapstoneGalleryQuestion> createState() =>
+      CapstoneGalleryQuestionState();
 }
 
-class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
+class CapstoneGalleryQuestionState extends State<CapstoneGalleryQuestion> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
-  bool _showError = false; // Add this line
+  bool _showError = false;
 
-  //fill this in with a correct answer to the question
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == '338') {
+    if (_controller.text.toLowerCase() == 'capstone gallery') {
       setState(() {
         _isCorrect = true;
         _showError = false;
       });
     } else {
       setState(() {
-        _showError = true; // Show error on wrong answer
+        _showError = true;
       });
     }
   }
@@ -33,7 +33,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 1: Binary'),
+        title: Text('Question 9: Wide Open Spaces!'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
       ),
       body: SingleChildScrollView(
@@ -45,26 +45,29 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    imagePath: 'assets/atrium_binary_cropped.jpg',
+                    imagePath: 'assets/capstone_gallery_cropped.png',
                     questionText:
-                        'Where past and future blend, minds ascend.\n Between science and study, my secret extends.\n Across from those who built this grand hall,\n My numbers await—will you decode them all?\n I whisper in ones and zeros, hidden in sight.\n Unravel my code to reveal my might.',
+                        'Where engineers learn and ideas take flight\n'
+                        'In a building so grand, reaching new height\n'
+                        'With classrooms and labs that shine bright as gold,\n'
+                        'Which hall holds the future, as stories unfold?\n',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
                   ),
                 if (_isCorrect)
                   SuccessMessage(
-                    imagePath: 'assets/atrium_binary.jpg',
+                    imagePath: 'assets/capstone_gallery.png',
                     description:
-                        "The Cambre Atrium bridges the old and new sections of Patrick F. Taylor Hall, linking classrooms and chemical engineering labs. It is one of three main common spaces and sits near the RoyOMartin Auditorium, the building's largest lecture hall.",
+                        " As a result of our recent \$114-million renovation and expansion, this building is now more than 400,000 square feet and provides students and faculty with state-of-the-art classrooms and labs. It also serves as the central hub for the College of Engineering’s eight academic departments, which educate thousands of undergraduate and graduate students each year.",
+                    nextButtonText: 'Advance to the next question...',
                     onNext: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ChevronQuestion()),
+                            builder: (context) => CivilLabQuestion()),
                       );
                     },
-                    nextButtonText: 'Advance to the next question...',
                   ),
               ],
             ),

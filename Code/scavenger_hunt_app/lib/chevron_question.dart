@@ -34,7 +34,7 @@ class _ChevronQuestionState extends State<ChevronQuestion> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Question 2: Location'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 70, 29, 124),
       ),
       body: SingleChildScrollView(
         child: Center(

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/atrium_binary_question.dart';
-import 'package:google_fonts/google_fonts.dart'; // Add this import
+import 'package:google_fonts/google_fonts.dart';
+import 'package:scavenger_hunt_app/main.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const FinalPage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class FinalPage extends StatelessWidget {
+  const FinalPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +53,6 @@ class MyApp extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 18, horizontal: 32),
           ),
         ),
-        cardTheme: CardTheme(
-          elevation: 8,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          shadowColor: Colors.black26,
-        ),
         appBarTheme: AppBarTheme(
           elevation: 2,
           centerTitle: true,
@@ -68,33 +62,19 @@ class MyApp extends StatelessWidget {
               fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
-      home: const MyHomePage(title: 'PFT Scavenger Hunt'),
+      home: const ThankYouPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  void navigateToNextScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => AtriumBinaryQuestion()),
-    );
-  }
+class ThankYouPage extends StatelessWidget {
+  const ThankYouPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('PFT Scavenger Hunt'),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -113,22 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Card(
-                  elevation: 12,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(24),
-                    child: Image.asset(
-                      'assets/PFT.jpg',
-                      height: 350,
-                      width: 350,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 32),
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.85),
@@ -143,24 +107,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   padding: EdgeInsets.all(20),
                   child: Text(
-                    'Welcome to your PFT Scavenger Hunt!\nExplore Patrick F. Taylor Hall and discover its secrets!',
+                    'We hope you enjoyed your tour of Patrick F. Taylor Hall!\nPress the button to return to the home page!',
                     style: Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                 ),
                 SizedBox(height: 40),
                 ElevatedButton.icon(
-                  onPressed: navigateToNextScreen,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyApp()));
+                  },
                   iconAlignment: IconAlignment.end,
                   icon: Icon(
-                    Icons.play_arrow_rounded,
+                    Icons.home_rounded,
                     size: 28,
                     color: Colors.white,
                   ),
                   label: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     child: Text(
-                      'Begin Your Adventure',
+                      'Return to Home Page',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                     ),

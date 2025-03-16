@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/chevron_question.dart';
+import 'package:scavenger_hunt_app/capstone_gallery_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
-class AtriumBinaryQuestion extends StatefulWidget {
-  const AtriumBinaryQuestion({super.key});
+class BIMQuestion extends StatefulWidget {
+  const BIMQuestion({super.key});
 
   @override
-  State<AtriumBinaryQuestion> createState() => _AtriumBinaryQuestionState();
+  State<BIMQuestion> createState() => BIMQuestionState();
 }
 
-class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
+class BIMQuestionState extends State<BIMQuestion> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
-  bool _showError = false; // Add this line
+  bool _showError = false;
 
-  //fill this in with a correct answer to the question
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == '338') {
+    if (_controller.text.toLowerCase() == 'bim') {
       setState(() {
         _isCorrect = true;
         _showError = false;
       });
     } else {
       setState(() {
-        _showError = true; // Show error on wrong answer
+        _showError = true;
       });
     }
   }
@@ -33,7 +32,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 1: Binary'),
+        title: Text('Question 8: Architecture!'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
       ),
       body: SingleChildScrollView(
@@ -45,26 +44,29 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    imagePath: 'assets/atrium_binary_cropped.jpg',
+                    imagePath: 'assets/bim_cropped.png',
                     questionText:
-                        'Where past and future blend, minds ascend.\n Between science and study, my secret extends.\n Across from those who built this grand hall,\n My numbers await—will you decode them all?\n I whisper in ones and zeros, hidden in sight.\n Unravel my code to reveal my might.',
+                        'Where construction minds are trained with care\n'
+                        'Plans come to life in the digital air\n'
+                        'With 44 screens and models so grand\n'
+                        'Which lab lets students virtually understand?\n',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
                   ),
                 if (_isCorrect)
                   SuccessMessage(
-                    imagePath: 'assets/atrium_binary.jpg',
+                    imagePath: 'assets/bim.png',
                     description:
-                        "The Cambre Atrium bridges the old and new sections of Patrick F. Taylor Hall, linking classrooms and chemical engineering labs. It is one of three main common spaces and sits near the RoyOMartin Auditorium, the building's largest lecture hall.",
+                        "The MMR Building Information Modeling Laboratory is utilized by construction management students and was specially designed and constructed by our faculty. The lab space consists of 44 4K displays that allow for three-dimensional and computer-generated views of building plans. This allows students and faculty to virtually visit building sites to make assessments, alter plans, and consider concerns like safety and maintenance.",
+                    nextButtonText: 'Advance to the next question...',
                     onNext: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ChevronQuestion()),
+                            builder: (context) => CapstoneGalleryQuestion()),
                       );
                     },
-                    nextButtonText: 'Advance to the next question...',
                   ),
               ],
             ),

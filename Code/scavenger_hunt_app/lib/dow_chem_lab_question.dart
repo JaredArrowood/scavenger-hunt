@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/chevron_question.dart';
+import 'package:scavenger_hunt_app/basf_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
-class AtriumBinaryQuestion extends StatefulWidget {
-  const AtriumBinaryQuestion({super.key});
+class DOWChemQuestion extends StatefulWidget {
+  const DOWChemQuestion({super.key});
 
   @override
-  State<AtriumBinaryQuestion> createState() => _AtriumBinaryQuestionState();
+  State<DOWChemQuestion> createState() => DOWQuestionState();
 }
 
-class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
+class DOWQuestionState extends State<DOWChemQuestion> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
   bool _showError = false; // Add this line
 
   //fill this in with a correct answer to the question
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == '338') {
+    if (_controller.text.toLowerCase() == 'dow') {
       setState(() {
         _isCorrect = true;
         _showError = false;
@@ -33,7 +33,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 1: Binary'),
+        title: Text('Question 5: Science!'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
       ),
       body: SingleChildScrollView(
@@ -45,23 +45,26 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    imagePath: 'assets/atrium_binary_cropped.jpg',
-                    questionText:
-                        'Where past and future blend, minds ascend.\n Between science and study, my secret extends.\n Across from those who built this grand hall,\n My numbers await—will you decode them all?\n I whisper in ones and zeros, hidden in sight.\n Unravel my code to reveal my might.',
+                    imagePath: 'assets/dow_cropped.png',
+                    questionText: 'Where chemicals mix and equations align,\n'
+                        'Engineers craft designs so fine.\n'
+                        'Pipes and pumps, reactions in sight,\n'
+                        'Turning ideas into futures bright.\n'
+                        'In Room 1114, where science is bliss,\n'
+                        'Which company am I, that sponsors all this?\n',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
                   ),
                 if (_isCorrect)
                   SuccessMessage(
-                    imagePath: 'assets/atrium_binary.jpg',
+                    imagePath: 'assets/dow.png',
                     description:
-                        "The Cambre Atrium bridges the old and new sections of Patrick F. Taylor Hall, linking classrooms and chemical engineering labs. It is one of three main common spaces and sits near the RoyOMartin Auditorium, the building's largest lecture hall.",
+                        "You've found the DOW Chemical Unit Operations Lab! The Dow Chemical Unit Operations Laboratory is a learning lab housed within the Cain Department of Chemical Engineering. It contains various pieces of equipment that are designed to complete specific unit operations.",
                     onNext: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => ChevronQuestion()),
+                        MaterialPageRoute(builder: (context) => BASFQuestion()),
                       );
                     },
                     nextButtonText: 'Advance to the next question...',

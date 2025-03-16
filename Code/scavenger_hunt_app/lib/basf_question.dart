@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/chevron_question.dart';
+import 'package:scavenger_hunt_app/upstairs_car_question';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
-class AtriumBinaryQuestion extends StatefulWidget {
-  const AtriumBinaryQuestion({super.key});
+class BASFQuestion extends StatefulWidget {
+  const BASFQuestion({super.key});
 
   @override
-  State<AtriumBinaryQuestion> createState() => _AtriumBinaryQuestionState();
+  State<BASFQuestion> createState() => BASFQuestionState();
 }
 
-class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
+class BASFQuestionState extends State<BASFQuestion> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
-  bool _showError = false; // Add this line
+  bool _showError = false;
 
-  //fill this in with a correct answer to the question
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == '338') {
+    if (_controller.text.toLowerCase() == 'basf') {
       setState(() {
         _isCorrect = true;
         _showError = false;
       });
     } else {
       setState(() {
-        _showError = true; // Show error on wrong answer
+        _showError = true;
       });
     }
   }
@@ -33,7 +32,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 1: Binary'),
+        title: Text('Question 6: Innovation!'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
       ),
       body: SingleChildScrollView(
@@ -45,23 +44,26 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    imagePath: 'assets/atrium_binary_cropped.jpg',
-                    questionText:
-                        'Where past and future blend, minds ascend.\n Between science and study, my secret extends.\n Across from those who built this grand hall,\n My numbers await—will you decode them all?\n I whisper in ones and zeros, hidden in sight.\n Unravel my code to reveal my might.',
+                    imagePath: 'assets/basf_cropped.png',
+                    questionText: 'Where biology sparks and ideas grow,\n'
+                        'Engineers shape the world we know.\n'
+                        'From research to practice, solving with care,\n'
+                        'A future of progress is crafted here.\n'
+                        'In Room 1154, where learning won’t stop,\n'
+                        'Which company am I, that stands at the top?\n',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
                   ),
                 if (_isCorrect)
                   SuccessMessage(
-                    imagePath: 'assets/atrium_binary.jpg',
+                    imagePath: 'assets/basf.png',
                     description:
-                        "The Cambre Atrium bridges the old and new sections of Patrick F. Taylor Hall, linking classrooms and chemical engineering labs. It is one of three main common spaces and sits near the RoyOMartin Auditorium, the building's largest lecture hall.",
+                        "You've found the BASF Living Lab! The BASF Sustainable Living Laboratory was funded by a \$1 million donation from BASF. The flooring, paint, and ceiling in this lab are all made from BASF products. The lab space is dedicated to research investigating sustainable solutions to meet global challenges.",
                     onNext: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => ChevronQuestion()),
+                        MaterialPageRoute(builder: (context) => CarQuestion()),
                       );
                     },
                     nextButtonText: 'Advance to the next question...',

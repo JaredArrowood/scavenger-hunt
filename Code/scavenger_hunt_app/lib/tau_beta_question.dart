@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/main.dart';
+import 'package:scavenger_hunt_app/panera_bread_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 
@@ -32,7 +32,7 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pink,
+        backgroundColor: const Color.fromARGB(255, 70, 29, 124),
         title: Text('Question 3: Symbol'),
       ),
       body: SingleChildScrollView(
@@ -44,14 +44,13 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    imagePath: 'assets/tau_beta_cropped.jpg',  
-                    questionText:
-                      "In halls where scholars rise,\n"
-                      "A distinction rare, a badge of pride.\n"
-                      "At LSU, where it first took its stand,\n"
-                      "A legacy built with an honored hand.\n"
-                      "What is this group that sets the bar high,\n"
-                      "Keeps the spirit alive, reaching the sky?",
+                    imagePath: 'assets/tau_beta_cropped.jpg',
+                    questionText: "In halls where scholars rise,\n"
+                        "A distinction rare, a badge of pride.\n"
+                        "At LSU, where it first took its stand,\n"
+                        "A legacy built with an honored hand.\n"
+                        "What is this group that sets the bar high,\n"
+                        "Keeps the spirit alive, reaching the sky?",
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
@@ -59,15 +58,16 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
                 if (_isCorrect)
                   SuccessMessage(
                     imagePath: 'assets/tau_beta.jpg',
-                    description: "Congratulations! You have finished!\nTau Beta Pi is a prestigious engineering honor society founded in 1885, recognizing students and alumni for academic excellence and strong character in the engineering field. With chapters at universities across the U.S., it promotes a spirit of culture and achievement in engineering.",
+                    description:
+                        "Congratulations! You have finished!\nTau Beta Pi is a prestigious engineering honor society founded in 1885, recognizing students and alumni for academic excellence and strong character in the engineering field. With chapters at universities across the U.S., it promotes a spirit of culture and achievement in engineering.",
                     onNext: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MyApp()),
+                            builder: (context) => PaneraBreadQuestion()),
                       );
                     },
-                    nextButtonText: 'Return Home',
+                    nextButtonText: 'Advance to the next question...',
                   ),
               ],
             ),

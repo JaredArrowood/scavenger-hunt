@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/chevron_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
+import 'package:scavenger_hunt_app/dow_chem_lab_question.dart';
 
-class AtriumBinaryQuestion extends StatefulWidget {
-  const AtriumBinaryQuestion({super.key});
+class PaneraBreadQuestion extends StatefulWidget {
+  const PaneraBreadQuestion({super.key});
 
   @override
-  State<AtriumBinaryQuestion> createState() => _AtriumBinaryQuestionState();
+  State<PaneraBreadQuestion> createState() => PaneraQuestionState();
 }
 
-class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
+class PaneraQuestionState extends State<PaneraBreadQuestion> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
   bool _showError = false; // Add this line
 
   //fill this in with a correct answer to the question
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == '338') {
+    if (_controller.text.toLowerCase() == 'panera bread') {
       setState(() {
         _isCorrect = true;
         _showError = false;
@@ -33,7 +33,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 1: Binary'),
+        title: Text('Question 4: Location'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
       ),
       body: SingleChildScrollView(
@@ -45,23 +45,27 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    imagePath: 'assets/atrium_binary_cropped.jpg',
-                    questionText:
-                        'Where past and future blend, minds ascend.\n Between science and study, my secret extends.\n Across from those who built this grand hall,\n My numbers await—will you decode them all?\n I whisper in ones and zeros, hidden in sight.\n Unravel my code to reveal my might.',
+                    imagePath: 'assets/panera_cropped.png',
+                    questionText: 'In a cozy spot where soups are hot,\n'
+                        'I bake fresh bread right on the spot.\n'
+                        'A place to gather, relax, and dine,\n'
+                        'A haven for students, a place divine.\n'
+                        'With coffee, bowls, and treats to share,\n'
+                        'What am I? You’ll find me there!\n',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
                   ),
                 if (_isCorrect)
                   SuccessMessage(
-                    imagePath: 'assets/atrium_binary.jpg',
+                    imagePath: 'assets/panera.jpg',
                     description:
-                        "The Cambre Atrium bridges the old and new sections of Patrick F. Taylor Hall, linking classrooms and chemical engineering labs. It is one of three main common spaces and sits near the RoyOMartin Auditorium, the building's largest lecture hall.",
+                        "Panera Bread is a popular bakery-cafe chain known for its fresh bread, soups, salads, and pastries. It provides a comfortable and inviting atmosphere for students to study, socialize, and enjoy delicious meals. With its commitment to quality ingredients and a welcoming environment, Panera Bread has become a favorite spot for many.",
                     onNext: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ChevronQuestion()),
+                            builder: (context) => DOWChemQuestion()),
                       );
                     },
                     nextButtonText: 'Advance to the next question...',
