@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/final_page.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
+import 'package:scavenger_hunt_app/question_progress.dart';
+import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
 class CivilLabQuestion extends StatefulWidget {
   const CivilLabQuestion({super.key});
@@ -32,8 +34,17 @@ class CivilLabQuestionState extends State<CivilLabQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 10: Building buildings?'),
+        title: Text('Question 10: Building'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationWrapper(initialIndex: 1)),
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -49,7 +60,7 @@ class CivilLabQuestionState extends State<CivilLabQuestion> {
                         'Where strength is tested, both soil and stone,\n'
                         'From concrete to timber, all are shown.\n'
                         'In labs where students work and design,\n'
-                        'Which field of engineering do they define?\n',
+                        'Which field of engineering do they define?',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
@@ -61,6 +72,7 @@ class CivilLabQuestionState extends State<CivilLabQuestion> {
                         "In this section of Patrick F. Taylor Hall, you will find most of our civil engineering student labs. Here, our students test concrete for strength and damage, test and create asphalt, test the chemical composition and strength of soils, and study the strength of metal and timber.",
                     nextButtonText: 'Next Screen...',
                     onNext: () {
+                      QuestionProgress.markComplete(9); // pass appropriate index: Question 9
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => FinalPage()),

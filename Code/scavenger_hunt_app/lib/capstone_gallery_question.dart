@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/civil_engineering_lab_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
+import 'package:scavenger_hunt_app/question_progress.dart';
+import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
 class CapstoneGalleryQuestion extends StatefulWidget {
   const CapstoneGalleryQuestion({super.key});
@@ -33,8 +35,17 @@ class CapstoneGalleryQuestionState extends State<CapstoneGalleryQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 9: Wide Open Spaces!'),
+        title: Text('Question 9: Wide Open'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationWrapper(initialIndex: 1)),
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -49,8 +60,8 @@ class CapstoneGalleryQuestionState extends State<CapstoneGalleryQuestion> {
                     questionText:
                         'Where engineers learn and ideas take flight\n'
                         'In a building so grand, reaching new height\n'
-                        'With classrooms and labs that shine bright as gold,\n'
-                        'Which hall holds the future, as stories unfold?\n',
+                        'With classrooms and labs shine bright as gold,\n'
+                        'Which hall holds the future, as stories unfold?',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
@@ -62,6 +73,7 @@ class CapstoneGalleryQuestionState extends State<CapstoneGalleryQuestion> {
                         " As a result of our recent \$114-million renovation and expansion, this building is now more than 400,000 square feet and provides students and faculty with state-of-the-art classrooms and labs. It also serves as the central hub for the College of Engineering’s eight academic departments, which educate thousands of undergraduate and graduate students each year.",
                     nextButtonText: 'Advance to the next question...',
                     onNext: () {
+                      QuestionProgress.markComplete(8); // pass appropriate index: Question 8
                       Navigator.push(
                         context,
                         MaterialPageRoute(

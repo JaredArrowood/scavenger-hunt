@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/atrium_binary_question.dart';
+import 'navigation_wrapper.dart';
 import 'package:google_fonts/google_fonts.dart'; // Add this import
 
 void main() {
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
               fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
-      home: const MyHomePage(title: 'PFT Scavenger Hunt'),
+      home: const NavigationWrapper(),
     );
   }
 }

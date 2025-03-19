@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/chevron_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
+import 'package:scavenger_hunt_app/question_progress.dart';
+import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
 class AtriumBinaryQuestion extends StatefulWidget {
   const AtriumBinaryQuestion({super.key});
@@ -35,6 +37,15 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
       appBar: AppBar(
         title: Text('Question 1: Binary'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationWrapper(initialIndex: 1)),
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -58,6 +69,7 @@ class _AtriumBinaryQuestionState extends State<AtriumBinaryQuestion> {
                     description:
                         "The Cambre Atrium bridges the old and new sections of Patrick F. Taylor Hall, linking classrooms and chemical engineering labs. It is one of three main common spaces and sits near the RoyOMartin Auditorium, the building's largest lecture hall.",
                     onNext: () {
+                      QuestionProgress.markComplete(0); // pass appropriate index: Question 0
                       Navigator.push(
                         context,
                         MaterialPageRoute(

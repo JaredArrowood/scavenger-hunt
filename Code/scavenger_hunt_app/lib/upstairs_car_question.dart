@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/main.dart';
 import 'package:scavenger_hunt_app/bim_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
+import 'package:scavenger_hunt_app/question_progress.dart';
+import 'package:scavenger_hunt_app/navigation_wrapper.dart';
+
 
 class CarQuestion extends StatefulWidget {
   const CarQuestion({super.key});
@@ -33,8 +35,17 @@ class CarQuestionState extends State<CarQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 7: Vroom!'),
+        title: Text('Question 7: Vroom'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationWrapper(initialIndex: 1)),
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -49,7 +60,7 @@ class CarQuestionState extends State<CarQuestion> {
                     questionText: 'In a world of speed, I\'m built to last,\n' 
                                   'Still to be designed with wheels so fast,\n' 
                                   'From the lab to the street, my name is key,\n' 
-                                  'What brand am I, can you guess me?\n',
+                                  'What brand am I, can you guess me?',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
@@ -61,6 +72,7 @@ class CarQuestionState extends State<CarQuestion> {
                       "You've found the car! The Civil Engineering Driving Simulator Laboratory allows students and faculty to research driving behaviors, environments, and traffic. Equipped with multiple screens, projectors, and blackout curtains, this lab gives our researchers the ability to test drive on new roadways and study drivers\’ reactions to unexpected obstacles and events",
                   nextButtonText: 'Advance to the next question...',
                   onNext: () {
+                    QuestionProgress.markComplete(6); // pass appropriate index: Question 6
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => BIMQuestion()),

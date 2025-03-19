@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/panera_bread_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
+import 'package:scavenger_hunt_app/question_progress.dart';
+import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
 class tauBetaQuestion extends StatefulWidget {
   const tauBetaQuestion({super.key});
@@ -34,6 +36,15 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
         title: Text('Question 3: Symbol'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationWrapper(initialIndex: 1)),
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -61,6 +72,7 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
                     description:
                         "Congratulations! You have finished!\nTau Beta Pi is a prestigious engineering honor society founded in 1885, recognizing students and alumni for academic excellence and strong character in the engineering field. With chapters at universities across the U.S., it promotes a spirit of culture and achievement in engineering.",
                     onNext: () {
+                      QuestionProgress.markComplete(2); // pass appropriate index: Question 2                      
                       Navigator.push(
                         context,
                         MaterialPageRoute(

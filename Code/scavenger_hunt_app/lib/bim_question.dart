@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/capstone_gallery_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
+import 'package:scavenger_hunt_app/question_progress.dart';
+import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
 class BIMQuestion extends StatefulWidget {
   const BIMQuestion({super.key});
@@ -32,8 +34,17 @@ class BIMQuestionState extends State<BIMQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 8: Architecture!'),
+        title: Text('Question 8: Architecture'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationWrapper(initialIndex: 1)),
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -46,10 +57,10 @@ class BIMQuestionState extends State<BIMQuestion> {
                   QuestionForm(
                     imagePath: 'assets/bim_cropped.png',
                     questionText:
-                        'Where construction minds are trained with care\n'
+                        'Where construction minds trained with care\n'
                         'Plans come to life in the digital air\n'
                         'With 44 screens and models so grand\n'
-                        'Which lab lets students virtually understand?\n',
+                        'Which lab lets students virtually understand?',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
@@ -61,6 +72,7 @@ class BIMQuestionState extends State<BIMQuestion> {
                         "The MMR Building Information Modeling Laboratory is utilized by construction management students and was specially designed and constructed by our faculty. The lab space consists of 44 4K displays that allow for three-dimensional and computer-generated views of building plans. This allows students and faculty to virtually visit building sites to make assessments, alter plans, and consider concerns like safety and maintenance.",
                     nextButtonText: 'Advance to the next question...',
                     onNext: () {
+                      QuestionProgress.markComplete(7); // pass appropriate index: Question 7
                       Navigator.push(
                         context,
                         MaterialPageRoute(

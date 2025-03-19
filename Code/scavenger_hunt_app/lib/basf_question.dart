@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/upstairs_car_question';
+import 'package:scavenger_hunt_app/upstairs_car_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
+import 'package:scavenger_hunt_app/question_progress.dart';
+import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
 class BASFQuestion extends StatefulWidget {
   const BASFQuestion({super.key});
@@ -32,8 +34,17 @@ class BASFQuestionState extends State<BASFQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 6: Innovation!'),
+        title: Text('Question 6: Innovation'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationWrapper(initialIndex: 1)),
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -50,7 +61,7 @@ class BASFQuestionState extends State<BASFQuestion> {
                         'From research to practice, solving with care,\n'
                         'A future of progress is crafted here.\n'
                         'In Room 1154, where learning won’t stop,\n'
-                        'Which company am I, that stands at the top?\n',
+                        'Which company am I, that stands at the top?',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
@@ -61,6 +72,7 @@ class BASFQuestionState extends State<BASFQuestion> {
                     description:
                         "You've found the BASF Living Lab! The BASF Sustainable Living Laboratory was funded by a \$1 million donation from BASF. The flooring, paint, and ceiling in this lab are all made from BASF products. The lab space is dedicated to research investigating sustainable solutions to meet global challenges.",
                     onNext: () {
+                      QuestionProgress.markComplete(5); // pass appropriate index: Question 5
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => CarQuestion()),

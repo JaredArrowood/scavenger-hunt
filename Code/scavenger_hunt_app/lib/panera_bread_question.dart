@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 import 'package:scavenger_hunt_app/dow_chem_lab_question.dart';
+import 'package:scavenger_hunt_app/question_progress.dart';
+import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
 class PaneraBreadQuestion extends StatefulWidget {
   const PaneraBreadQuestion({super.key});
@@ -33,8 +35,17 @@ class PaneraQuestionState extends State<PaneraBreadQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Question 4: Location'),
+        title: Text('Question 4: Food'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationWrapper(initialIndex: 1)),
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -51,7 +62,7 @@ class PaneraQuestionState extends State<PaneraBreadQuestion> {
                         'A place to gather, relax, and dine,\n'
                         'A haven for students, a place divine.\n'
                         'With coffee, bowls, and treats to share,\n'
-                        'What am I? You’ll find me there!\n',
+                        'What am I? You’ll find me there!',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
@@ -62,6 +73,7 @@ class PaneraQuestionState extends State<PaneraBreadQuestion> {
                     description:
                         "Panera Bread is a popular bakery-cafe chain known for its fresh bread, soups, salads, and pastries. It provides a comfortable and inviting atmosphere for students to study, socialize, and enjoy delicious meals. With its commitment to quality ingredients and a welcoming environment, Panera Bread has become a favorite spot for many.",
                     onNext: () {
+                      QuestionProgress.markComplete(3); // pass appropriate index: Question 3
                       Navigator.push(
                         context,
                         MaterialPageRoute(
