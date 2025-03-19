@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/panera_bread_question.dart';
+import 'package:scavenger_hunt_app/final_page.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 import 'package:scavenger_hunt_app/question_progress.dart';
 import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
-class tauBetaQuestion extends StatefulWidget {
-  const tauBetaQuestion({super.key});
+class CivilLabQuestion extends StatefulWidget {
+  const CivilLabQuestion({super.key});
 
   @override
-  tauBetaQuestionState createState() => tauBetaQuestionState();
+  State<CivilLabQuestion> createState() => CivilLabQuestionState();
 }
 
-class tauBetaQuestionState extends State<tauBetaQuestion> {
+class CivilLabQuestionState extends State<CivilLabQuestion> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
   bool _showError = false;
 
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == 'tau beta pi') {
+    if (_controller.text.toLowerCase() == 'civil engineering') {
       setState(() {
         _isCorrect = true;
         _showError = false;
@@ -34,8 +34,8 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Question 10: Building'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
-        title: Text('Question 3: Symbol'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -55,31 +55,29 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    imagePath: 'assets/tau_beta_cropped.jpg',
-                    questionText: "In halls where scholars rise,\n"
-                        "A distinction rare, a badge of pride.\n"
-                        "At LSU, where it first took its stand,\n"
-                        "A legacy built with an honored hand.\n"
-                        "What is this group that sets the bar high,\n"
-                        "Keeps the spirit alive, reaching the sky?",
+                    imagePath: 'assets/civil_lab_cropped.png',
+                    questionText:
+                        'Where strength is tested, both soil and stone,\n'
+                        'From concrete to timber, all are shown.\n'
+                        'In labs where students work and design,\n'
+                        'Which field of engineering do they define?',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
                   ),
                 if (_isCorrect)
                   SuccessMessage(
-                    imagePath: 'assets/tau_beta.jpg',
+                    imagePath: 'assets/civil_lab.png',
                     description:
-                        "Congratulations! You have finished!\nTau Beta Pi is a prestigious engineering honor society founded in 1885, recognizing students and alumni for academic excellence and strong character in the engineering field. With chapters at universities across the U.S., it promotes a spirit of culture and achievement in engineering.",
+                        "In this section of Patrick F. Taylor Hall, you will find most of our civil engineering student labs. Here, our students test concrete for strength and damage, test and create asphalt, test the chemical composition and strength of soils, and study the strength of metal and timber.",
+                    nextButtonText: 'Next Screen...',
                     onNext: () {
-                      QuestionProgress.markComplete(2); // pass appropriate index: Question 2                      
+                      QuestionProgress.markComplete(9); // pass appropriate index: Question 9
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => PaneraBreadQuestion()),
+                        MaterialPageRoute(builder: (context) => FinalPage()),
                       );
                     },
-                    nextButtonText: 'Advance to the next question...',
                   ),
               ],
             ),

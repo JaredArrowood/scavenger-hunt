@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/tau_beta_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
+import 'package:scavenger_hunt_app/question_progress.dart';
+import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
 class ChevronQuestion extends StatefulWidget {
   const ChevronQuestion({super.key});
@@ -34,7 +36,16 @@ class _ChevronQuestionState extends State<ChevronQuestion> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Question 2: Location'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 70, 29, 124),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationWrapper(initialIndex: 1)),
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -62,6 +73,7 @@ class _ChevronQuestionState extends State<ChevronQuestion> {
                     description:
                         "The Chevron Center helps students enhance communication skills and provides resources like 3D printers for class projects. Students who complete required courses and a portfolio can graduate as Distinguished Communicators.",
                     onNext: () {
+                      QuestionProgress.markComplete(1); // pass appropriate index: Question 1
                       Navigator.push(
                         context,
                         MaterialPageRoute(

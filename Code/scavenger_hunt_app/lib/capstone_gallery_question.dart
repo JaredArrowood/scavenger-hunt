@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/panera_bread_question.dart';
+import 'package:scavenger_hunt_app/civil_engineering_lab_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 import 'package:scavenger_hunt_app/question_progress.dart';
 import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
-class tauBetaQuestion extends StatefulWidget {
-  const tauBetaQuestion({super.key});
+class CapstoneGalleryQuestion extends StatefulWidget {
+  const CapstoneGalleryQuestion({super.key});
 
   @override
-  tauBetaQuestionState createState() => tauBetaQuestionState();
+  State<CapstoneGalleryQuestion> createState() =>
+      CapstoneGalleryQuestionState();
 }
 
-class tauBetaQuestionState extends State<tauBetaQuestion> {
+class CapstoneGalleryQuestionState extends State<CapstoneGalleryQuestion> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
   bool _showError = false;
 
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == 'tau beta pi') {
+    if (_controller.text.toLowerCase() == 'capstone gallery') {
       setState(() {
         _isCorrect = true;
         _showError = false;
@@ -34,8 +35,8 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Question 9: Wide Open'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
-        title: Text('Question 3: Symbol'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -55,31 +56,30 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    imagePath: 'assets/tau_beta_cropped.jpg',
-                    questionText: "In halls where scholars rise,\n"
-                        "A distinction rare, a badge of pride.\n"
-                        "At LSU, where it first took its stand,\n"
-                        "A legacy built with an honored hand.\n"
-                        "What is this group that sets the bar high,\n"
-                        "Keeps the spirit alive, reaching the sky?",
+                    imagePath: 'assets/capstone_gallery_cropped.png',
+                    questionText:
+                        'Where engineers learn and ideas take flight\n'
+                        'In a building so grand, reaching new height\n'
+                        'With classrooms and labs shine bright as gold,\n'
+                        'Which hall holds the future, as stories unfold?',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
                   ),
                 if (_isCorrect)
                   SuccessMessage(
-                    imagePath: 'assets/tau_beta.jpg',
+                    imagePath: 'assets/capstone_gallery.png',
                     description:
-                        "Congratulations! You have finished!\nTau Beta Pi is a prestigious engineering honor society founded in 1885, recognizing students and alumni for academic excellence and strong character in the engineering field. With chapters at universities across the U.S., it promotes a spirit of culture and achievement in engineering.",
+                        " As a result of our recent \$114-million renovation and expansion, this building is now more than 400,000 square feet and provides students and faculty with state-of-the-art classrooms and labs. It also serves as the central hub for the College of Engineering’s eight academic departments, which educate thousands of undergraduate and graduate students each year.",
+                    nextButtonText: 'Advance to the next question...',
                     onNext: () {
-                      QuestionProgress.markComplete(2); // pass appropriate index: Question 2                      
+                      QuestionProgress.markComplete(8); // pass appropriate index: Question 8
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => PaneraBreadQuestion()),
+                            builder: (context) => CivilLabQuestion()),
                       );
                     },
-                    nextButtonText: 'Advance to the next question...',
                   ),
               ],
             ),

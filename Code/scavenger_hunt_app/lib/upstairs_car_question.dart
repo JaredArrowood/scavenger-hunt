@@ -1,0 +1,89 @@
+import 'package:flutter/material.dart';
+import 'package:scavenger_hunt_app/bim_question.dart';
+import 'package:scavenger_hunt_app/widgets/question_form.dart';
+import 'package:scavenger_hunt_app/widgets/success_message.dart';
+import 'package:scavenger_hunt_app/question_progress.dart';
+import 'package:scavenger_hunt_app/navigation_wrapper.dart';
+
+
+class CarQuestion extends StatefulWidget {
+  const CarQuestion({super.key});
+
+  @override
+  State<CarQuestion> createState() => CarQuestionState();
+}
+
+class CarQuestionState extends State<CarQuestion> {
+  final TextEditingController _controller = TextEditingController();
+  bool _isCorrect = false;
+  bool _showError = false;
+
+  void _checkAnswer() {
+    if (_controller.text.toLowerCase() == 'ford') {
+      setState(() {
+        _isCorrect = true;
+        _showError = false;
+      });
+    } else {
+      setState(() {
+        _showError = true;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Question 7: Vroom'),
+        backgroundColor: const Color.fromARGB(255, 70, 29, 124),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const NavigationWrapper(initialIndex: 1)),
+            );
+          },
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                if (!_isCorrect)
+                  QuestionForm(
+                    imagePath: 'assets/pft_car_cropped.png',
+                    questionText: 'In a world of speed, I\'m built to last,\n' 
+                                  'Still to be designed with wheels so fast,\n' 
+                                  'From the lab to the street, my name is key,\n' 
+                                  'What brand am I, can you guess me?',
+                    showError: _showError,
+                    controller: _controller,
+                    onSubmit: _checkAnswer,
+                  ),
+                if (_isCorrect)
+                  SuccessMessage(
+                    imagePath: 'assets/pft_car.jpg',
+                  description:
+                      "You've found the car! The Civil Engineering Driving Simulator Laboratory allows students and faculty to research driving behaviors, environments, and traffic. Equipped with multiple screens, projectors, and blackout curtains, this lab gives our researchers the ability to test drive on new roadways and study drivers\’ reactions to unexpected obstacles and events",
+                  nextButtonText: 'Advance to the next question...',
+                  onNext: () {
+                    QuestionProgress.markComplete(6); // pass appropriate index: Question 6
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BIMQuestion()),
+                    );
+                  },
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

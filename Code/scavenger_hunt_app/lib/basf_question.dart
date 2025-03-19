@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:scavenger_hunt_app/panera_bread_question.dart';
+import 'package:scavenger_hunt_app/upstairs_car_question.dart';
 import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 import 'package:scavenger_hunt_app/question_progress.dart';
 import 'package:scavenger_hunt_app/navigation_wrapper.dart';
 
-class tauBetaQuestion extends StatefulWidget {
-  const tauBetaQuestion({super.key});
+class BASFQuestion extends StatefulWidget {
+  const BASFQuestion({super.key});
 
   @override
-  tauBetaQuestionState createState() => tauBetaQuestionState();
+  State<BASFQuestion> createState() => BASFQuestionState();
 }
 
-class tauBetaQuestionState extends State<tauBetaQuestion> {
+class BASFQuestionState extends State<BASFQuestion> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
   bool _showError = false;
 
   void _checkAnswer() {
-    if (_controller.text.toLowerCase() == 'tau beta pi') {
+    if (_controller.text.toLowerCase() == 'basf') {
       setState(() {
         _isCorrect = true;
         _showError = false;
@@ -34,8 +34,8 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Question 6: Innovation'),
         backgroundColor: const Color.fromARGB(255, 70, 29, 124),
-        title: Text('Question 3: Symbol'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -55,28 +55,27 @@ class tauBetaQuestionState extends State<tauBetaQuestion> {
               children: <Widget>[
                 if (!_isCorrect)
                   QuestionForm(
-                    imagePath: 'assets/tau_beta_cropped.jpg',
-                    questionText: "In halls where scholars rise,\n"
-                        "A distinction rare, a badge of pride.\n"
-                        "At LSU, where it first took its stand,\n"
-                        "A legacy built with an honored hand.\n"
-                        "What is this group that sets the bar high,\n"
-                        "Keeps the spirit alive, reaching the sky?",
+                    imagePath: 'assets/basf_cropped.png',
+                    questionText: 'Where biology sparks and ideas grow,\n'
+                        'Engineers shape the world we know.\n'
+                        'From research to practice, solving with care,\n'
+                        'A future of progress is crafted here.\n'
+                        'In Room 1154, where learning won’t stop,\n'
+                        'Which company am I, that stands at the top?',
                     showError: _showError,
                     controller: _controller,
                     onSubmit: _checkAnswer,
                   ),
                 if (_isCorrect)
                   SuccessMessage(
-                    imagePath: 'assets/tau_beta.jpg',
+                    imagePath: 'assets/basf.png',
                     description:
-                        "Congratulations! You have finished!\nTau Beta Pi is a prestigious engineering honor society founded in 1885, recognizing students and alumni for academic excellence and strong character in the engineering field. With chapters at universities across the U.S., it promotes a spirit of culture and achievement in engineering.",
+                        "You've found the BASF Living Lab! The BASF Sustainable Living Laboratory was funded by a \$1 million donation from BASF. The flooring, paint, and ceiling in this lab are all made from BASF products. The lab space is dedicated to research investigating sustainable solutions to meet global challenges.",
                     onNext: () {
-                      QuestionProgress.markComplete(2); // pass appropriate index: Question 2                      
+                      QuestionProgress.markComplete(5); // pass appropriate index: Question 5
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => PaneraBreadQuestion()),
+                        MaterialPageRoute(builder: (context) => CarQuestion()),
                       );
                     },
                     nextButtonText: 'Advance to the next question...',

@@ -54,7 +54,7 @@ class QuestionForm extends StatelessWidget {
           child: Text(
             questionText,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontSize: 18,
+                  fontSize: 14,
                   fontStyle: FontStyle.italic,
                   height: 1.8,
                 ),
