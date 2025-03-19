@@ -1,1 +1,1 @@
-# scavenger-hunt
+# scavenger-hunt :)
