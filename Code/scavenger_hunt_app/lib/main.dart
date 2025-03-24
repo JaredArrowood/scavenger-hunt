@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/color_palette.dart';
-import 'package:scavenger_hunt_app/questions/0_atrium_binary_question.dart';
 import 'package:scavenger_hunt_app/splash_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scavenger_hunt_app/question_progress.dart'; // Import for progress

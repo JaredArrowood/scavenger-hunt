@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:scavenger_hunt_app/color_palette.dart';
-import 'package:scavenger_hunt_app/widgets/question_form.dart';
 import 'package:scavenger_hunt_app/widgets/success_message.dart';
 import 'package:scavenger_hunt_app/question_progress.dart';
 import 'package:scavenger_hunt_app/navigation_wrapper.dart';
@@ -37,6 +36,7 @@ class _QuestionPageState extends State<QuestionPage> {
   final TextEditingController _controller = TextEditingController();
   bool _isCorrect = false;
   bool _showError = false;
+  bool _displayHint = false;
 
   void _checkAnswer() {
     if (_controller.text.toLowerCase() == widget.correctAnswer.toLowerCase()) {
@@ -49,6 +49,12 @@ class _QuestionPageState extends State<QuestionPage> {
         _showError = true;
       });
     }
+  }
+
+  void _toggleHint() {
+    setState(() {
+      _displayHint = true;
+    });
   }
 
   @override
@@ -81,14 +87,143 @@ class _QuestionPageState extends State<QuestionPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  if (!_isCorrect)
-                    QuestionForm(
-                      imagePath: widget.questionImagePath,
-                      questionText: widget.questionText,
-                      showError: _showError,
-                      controller: _controller,
-                      onSubmit: _checkAnswer,
+                  if (!_isCorrect) ...[
+                    // Always show the image
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        widget.questionImagePath,
+                        height: 250,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
                     ),
+                    const SizedBox(height: 20),
+
+                    // Show either the hint button or the question and answer field
+                    if (_displayHint) ...[
+                      // Question Text
+                      Card(
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            widget.questionText,
+                            style: const TextStyle(fontSize: 18),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+
+                      // Answer input field
+
+                      TextField(
+                        controller: _controller,
+                        decoration: InputDecoration(
+                          labelText: 'Enter your answer',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          errorText: _showError
+                              ? 'Incorrect answer. Try again!'
+                              : null,
+                          filled: true,
+                          fillColor: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+
+                      // Submit button
+                      ElevatedButton(
+                        onPressed: _checkAnswer,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: BrandColors.officialPurple,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 32,
+                          ),
+                        ),
+                        child: const Text(
+                          'Submit Answer',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ] else
+                      // Show the "Need a hint?" button
+                      ElevatedButton.icon(
+                        onPressed: _toggleHint,
+                        icon: const Icon(Icons.lightbulb_outline),
+                        label: const Text(
+                          "Need a hint?",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: BrandColors.officialGold,
+                          foregroundColor: Colors.black87,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 24,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                    if (!_displayHint)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 100),
+                        child: Column(
+                          children: [
+                            TextField(
+                              controller: _controller,
+                              decoration: InputDecoration(
+                                labelText: 'Enter your answer',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                errorText: _showError
+                                    ? 'Incorrect answer. Try again!'
+                                    : null,
+                                filled: true,
+                                fillColor: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+
+                            // Submit button
+                            ElevatedButton(
+                              onPressed: _checkAnswer,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: BrandColors.officialPurple,
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 12,
+                                  horizontal: 32,
+                                ),
+                              ),
+                              child: const Text(
+                                'Submit Answer',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ],
+
+                  // Show success message when correct
                   if (_isCorrect)
                     SuccessMessage(
                       imagePath: widget.successImagePath,
