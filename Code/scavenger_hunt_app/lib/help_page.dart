@@ -8,7 +8,6 @@ class HelpPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Help'),
-        backgroundColor: Colors.deepPurple,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -25,13 +24,13 @@ class HelpPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               _buildHelpSection('Getting Started',
-                  'Welcome to the Scavenger Hunt App! To begin a new hunt, tap on "Start Hunt" from the home screen and follow the prompts to join an existing hunt or create a new one.'),
+                  'Welcome to the LSU Scavenger Hunt App! To begin the hunt, tap on "Begin Your Adventure" from the home screen. Good luck, tiger!'),
               _buildHelpSection('Finding Clues',
-                  'Use your camera to scan QR codes at scavenger hunt locations. Each successful scan will reveal a new clue or challenge to complete.'),
+                  'Walk around Patrick F. Taylor Hall to find answers for each section.'),
               _buildHelpSection('Submitting Answers',
                   'When prompted to answer a question or complete a challenge, enter your response in the provided field and tap "Submit" to continue to the next clue.'),
               _buildHelpSection('Viewing Progress',
-                  'Check your current progress by tapping the "Progress" button. This will show which clues you\'ve found and how many remain.'),
+                  'Check your current progress by tapping the "Questions" tab. This will show which clues you\'ve found and how many remain.'),
               _buildHelpSection('Technical Issues',
                   'If you encounter any technical issues, try restarting the app. If problems persist, please contact our support team.'),
               const SizedBox(height: 20),

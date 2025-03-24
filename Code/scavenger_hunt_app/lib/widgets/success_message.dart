@@ -17,6 +17,8 @@ class SuccessMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      // Center the content vertically
       children: [
         Text(
           "Correct!",
@@ -53,7 +55,7 @@ class SuccessMessage extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               color: Colors.green,
-              fontWeight: FontWeight.w600, 
+              fontWeight: FontWeight.w600,
             ),
             textAlign: TextAlign.center,
           ),
@@ -66,7 +68,8 @@ class SuccessMessage extends StatelessWidget {
             foregroundColor: Colors.white,
             padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12), // Rounded corners for button
+              borderRadius:
+                  BorderRadius.circular(12), // Rounded corners for button
             ),
           ),
           child: Text(

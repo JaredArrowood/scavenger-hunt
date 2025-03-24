@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scavenger_hunt_app/color_palette.dart';
 
 class QuestionForm extends StatelessWidget {
   final String? imagePath;
@@ -82,7 +83,7 @@ class QuestionForm extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: Colors.deepPurple[700],
+                  color: BrandColors.officialPurple,
                 ),
               ),
               SizedBox(height: 16),
@@ -97,7 +98,8 @@ class QuestionForm extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: Colors.deepPurple, width: 2),
+                    borderSide:
+                        BorderSide(color: BrandColors.officialPurple, width: 2),
                   ),
                   hintText: 'Type your answer here',
                   errorText: showError ? 'Incorrect answer, try again' : null,
@@ -133,6 +135,7 @@ class QuestionForm extends StatelessWidget {
                 onPressed: onSubmit,
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(200, 50),
+                  backgroundColor: BrandColors.officialPurple,
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
